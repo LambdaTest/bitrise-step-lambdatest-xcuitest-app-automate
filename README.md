@@ -1,0 +1,1 @@
+# bitrise-step-lambdatest-xcuitest-app-automate
