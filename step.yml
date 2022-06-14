@@ -1,0 +1,172 @@
+#
+# A couple of useful guides & docs:
+#
+# - Main Bitrise CLI docs: https://github.com/bitrise-io/bitrise/tree/master/_docs
+# - Step Development Guideline: https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md
+# - Bitrise.yml format spec: https://github.com/bitrise-io/bitrise/blob/master/_docs/bitrise-yml-format-spec.md
+# - Bitrise docs: http://devcenter.bitrise.io/
+# - Bitrise CLI guides: http://devcenter.bitrise.io/bitrise-cli/
+
+title: |-
+  LambdaTest App Automate - XCUITest
+summary: |
+  Upload an app ipa and an XCUITest test ipa/zip to LambdaTest and run tests with App Automate. For more information, please check out this [document](https://www.lambdatest.com/support/docs/getting-started-with-espresso-testing/)
+description: |
+  This step uploads a provided app ipa and test ipa/zip to LambdaTest. It then will execute the XCUI Tests for the provided apps in LambdaTest's app automate.
+website: https://github.com/rohithmone-lt/bitrise-step-lambdatest-xcuitest-app-automate
+source_code_url: https://github.com/rohithmone-lt/bitrise-step-lambdatest-xcuitest-app-automate
+support_url: https://github.com/rohithmone-lt/bitrise-step-lambdatest-xcuitest-app-automate/issues
+
+project_type_tags:
+  - ios
+  - macos
+
+# Type tags are used for categorizing steps, for easier step discovery in Step Libraries.
+# You can find more information about type tags in the Step Development Guideline:
+# https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md
+type_tags:
+  - test
+
+is_always_run: false
+is_skippable: false
+run_if: ""
+
+deps:
+  brew:
+  - name: curl
+  - name: jq
+  - name: sed
+  apt_get:
+  - name: curl
+  - name: jq
+  - name: sed
+
+inputs:
+  - app_ipa_path:
+    opts:
+      title: App ipa path
+      summary: Path to the app .ipa file
+      description: |
+        The .ipa file for your app
+      is_expand: true
+      is_required: true
+  - test_ipa_path:
+    opts:
+      title: Test suite ipa/zip path
+      summary: Path to the xcui test .ipa or .zip file
+      description: |
+        The test .ipa or .zip file for your app
+      is_expand: true
+      is_required: true
+  - lambdatest_username:
+    opts:
+      title: LambdaTest username
+      summary: Your LambdaTest username
+      description: |
+        The username you use to log into your LambdaTest account
+      is_expand: true
+      is_required: true
+      is_sensitive: true
+  - lambdatest_access_key:
+    opts:
+      title: LambdaTest access key
+      summary: Your LambdaTest access key
+      description: |
+        The access key you use to log into your LambdaTest account
+      is_expand: true
+      is_required: true
+      is_sensitive: true
+  - lambdatest_device_list: "\"iPhone 12-14\", \"iPhone 6S-13\""
+    opts:
+      title: Device list
+      category: Automated Test Options
+      summary: A comma separated list of desired test devices
+      description: |
+        Provide a comma separated list of Device and OS version you want to run your tests on, with quotes. Acceptable format example: "iPhone 12-14", "iPhone 6S-13"
+        A list of available device and OS combinations can be found [here](https://www.lambdatest.com/list-of-real-devices)
+      is_expand: true
+      is_required: true
+  - lambdatest_build_name: "Untitled XCUITest"
+    opts:
+      title: Build Name
+      category: Automated Test Options
+      summary: Your build name
+      description: |
+        The name of your build
+      is_required: false
+  - lambdatest_queue_timeout: 600
+    opts:
+      title: Queue Timeout
+      category: Automated Test Options
+      summary: The time in seconds after which you want your build to timeout from queue. 
+      description: |
+        The time in seconds after which you want your build to timeout from queue. The default value of Queue Timeout is 600 seconds.
+      is_required: false
+  - lambdatest_idle_timeout: 120
+    opts:
+      title: Idle Timeout
+      category: Automated Test Options
+      summary: The time in seconds for maximum running time on a test in the build.
+      description: |
+        The time in seconds for maximum running time on a test in the build. The default value of Queue Timeout is 120 seconds.
+      is_required: false
+  - lambdatest_geo_location:
+    opts:
+      title: Geo Location
+      category: Automated Test Options
+      summary: The country code to simulate the location of the device to a particular Geo Location.
+      description: |
+        The country code to simulate the location of the device to a particular Geo Location.
+      is_required: false
+  - lambdatest_tunnel: "false"
+    opts:
+      title: Tunnel
+      category: Automated Test Options
+      summary: Set this parameter if you want to enable local testing.
+      description: Set this parameter if you want to enable local testing. By default its set to false. Make sure only one of GeoLocation and Tunnel must be used in a single test.
+      is_required: false
+      value_options:
+        - "true"
+        - "false"
+  - lambdatest_tunnel_identifier:
+    opts:
+      title: "Local Identifier"
+      category: Automated Test Options
+      summary: If you are using same account to test multiple applications, you can setup named connection using the tunnelIdentifier option.
+      description: If you are using same account to test multiple applications, you can setup named connection using the tunnelIdentifier option.
+      is_required: false
+  - lambdatest_device_logs: "true"
+    opts:
+      title: Device Logs
+      category: Automated Test Options
+      summary: Set this parameter to true if you want to enable the device logs
+      description: Set this parameter to true if you want to enable the device logs
+      is_required: false
+      value_options:
+        - "true"
+        - "false"
+  - lambdatest_network_logs: "true"
+    opts:
+      title: Network Logs
+      category: Automated Test Options
+      summary: Set this parameter to true if you want to enable the network logs
+      description: Set this parameter to true if you want to enable the network logs
+      is_required: false
+      value_options:
+        - "true"
+        - "false"
+  - lambdatest_video: "true"
+    opts:
+      title: Video
+      category: Automated Test Options
+      summary: Set this parameter to true if you want to enable the video of the test run.
+      description: Set this parameter to true if you want to enable the video of the test run. By default it's set to true.
+      is_required: false
+      value_options:
+        - "true"
+        - "false"
+outputs:
+  - LAMBDATEST_BUILD_ID:
+    opts:
+      title: Build ID
+      summary: The Build ID for this test run in LambdaTest
