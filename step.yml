@@ -76,7 +76,7 @@ inputs:
       is_expand: true
       is_required: true
       is_sensitive: true
-  - lambdatest_device_list: "\"iPhone 12-14\", \"iPhone 6S-13\""
+  - lambdatest_device_list: ""
     opts:
       title: Device list
       category: Automated Test Options
@@ -86,7 +86,7 @@ inputs:
         A list of available device and OS combinations can be found [here](https://www.lambdatest.com/list-of-real-devices)
       is_expand: true
       is_required: true
-  - lambdatest_build_name: "Untitled XCUITest"
+  - lambdatest_build_name: ""
     opts:
       title: Build Name
       category: Automated Test Options
