@@ -10,7 +10,7 @@
 title: |-
   LambdaTest App Automate - XCUITest
 summary: |
-  Upload an app ipa and an XCUITest test ipa/zip to LambdaTest and run tests with App Automate. For more information, please check out this [document](https://www.lambdatest.com/support/docs/getting-started-with-espresso-testing/)
+  Upload an app ipa and an XCUITest test ipa/zip to LambdaTest and run tests with App Automate. For more information, please check out this [document](https://www.lambdatest.com/support/docs/getting-started-with-xcuitest/)
 description: |
   This step uploads a provided app ipa and test ipa/zip to LambdaTest. It then will execute the XCUI Tests for the provided apps in LambdaTest's app automate.
 website: https://github.com/rohithmone-lt/bitrise-step-lambdatest-xcuitest-app-automate
