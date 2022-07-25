@@ -1,12 +1,3 @@
-#
-# A couple of useful guides & docs:
-#
-# - Main Bitrise CLI docs: https://github.com/bitrise-io/bitrise/tree/master/_docs
-# - Step Development Guideline: https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md
-# - Bitrise.yml format spec: https://github.com/bitrise-io/bitrise/blob/master/_docs/bitrise-yml-format-spec.md
-# - Bitrise docs: http://devcenter.bitrise.io/
-# - Bitrise CLI guides: http://devcenter.bitrise.io/bitrise-cli/
-
 title: |-
   LambdaTest App Automate - XCUITest
 summary: |
@@ -21,9 +12,6 @@ project_type_tags:
   - ios
   - macos
 
-# Type tags are used for categorizing steps, for easier step discovery in Step Libraries.
-# You can find more information about type tags in the Step Development Guideline:
-# https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md
 type_tags:
   - test
 
@@ -128,14 +116,14 @@ inputs:
       value_options:
         - "true"
         - "false"
-  - lambdatest_tunnel_identifier:
+  - lambdatest_tunnel_name:
     opts:
-      title: "Local Identifier"
+      title: Tunnel Name
       category: Automated Test Options
-      summary: If you are using same account to test multiple applications, you can setup named connection using the tunnelIdentifier option.
-      description: If you are using same account to test multiple applications, you can setup named connection using the tunnelIdentifier option.
+      summary: Your Tunnel Name
+      description: Name of the tunnel
       is_required: false
-  - lambdatest_device_logs: "true"
+  - lambdatest_device_logs: "false"
     opts:
       title: Device Logs
       category: Automated Test Options
@@ -145,7 +133,7 @@ inputs:
       value_options:
         - "true"
         - "false"
-  - lambdatest_network_logs: "true"
+  - lambdatest_network_logs: "false"
     opts:
       title: Network Logs
       category: Automated Test Options
