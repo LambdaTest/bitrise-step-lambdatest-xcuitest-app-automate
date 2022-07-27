@@ -1,6 +1,6 @@
 # lambdatest-xcuitest-app-automate
 
-This step uploads a provided app ipa and test ipa/zip to LambdaTest. It then will execute the XCUI Tests for the provided apps in LambdaTest app automate.
+This step uploads a provided app ipa and test ipa to LambdaTest. It then will execute the XCUI Tests for the provided apps in LambdaTest app automate.
 
 
 ## How to use this Step
