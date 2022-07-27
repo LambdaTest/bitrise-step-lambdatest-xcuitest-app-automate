@@ -10,7 +10,7 @@ else
     app_url=$(echo "$upload_app_response" | jq .app_id)
 fi
 
-echo "uploading test ipa/zip to LambdaTest"
+echo "uploading test ipa to LambdaTest"
 if [ -z "${test_ipa_path##*http*}" ]; then
     upload_test_response="$(curl --location --request POST https://$lambdatest_username:$lambdatest_access_key@manual-api.lambdatest.com/app/uploadFramework --form type="xcuit-ios" --form url=$test_ipa_path)"
     test_url=$(echo "$upload_test_response" | jq .app_id)
