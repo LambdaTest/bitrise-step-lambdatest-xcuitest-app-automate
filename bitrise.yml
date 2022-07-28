@@ -11,7 +11,7 @@ app:
   # If you want to share this step into a StepLib
   - BITRISE_STEP_ID: lambdatest-xcuitest-app-automate
   - BITRISE_STEP_VERSION: "1.0.0"
-  - BITRISE_STEP_GIT_CLONE_URL: https://github.com/rohithmone-lt/bitrise-step-lambdatest-xcuitest-app-automate.git
+  - BITRISE_STEP_GIT_CLONE_URL: https://github.com/LambdaTest/bitrise-step-lambdatest-xcuitest-app-automate.git
   - MY_STEPLIB_REPO_FORK_GIT_URL: https://github.com/LambdaTest/bitrise-steplib
 
 workflows:
