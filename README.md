@@ -14,8 +14,9 @@ This Bitrise step uploads a provided app IPA and test IPA to TestMu AI (Formerly
 - [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
 - Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
-This step uploads a provided app ipa and test ipa to TestMu AI (Formerly LambdaTest). It then will execute the XCUI Tests for the provided apps in TestMu AI (Formerly LambdaTest) app automate.
+### Prerequisites
 
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
 
 ## How to use this Step
 
@@ -55,7 +56,7 @@ envs:
 6. Provide test values for the inputs in the `bitrise.yml`
 7. Run your step with `bitrise run test` - if it works, you're ready
 
-__For Step development guidelines & best practices__ check this documentation: [https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md](https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md).
+__For Step development guidelines & best practices__ check this documentation: [https://devcenter.bitrise.io/en/steps-and-workflows/developing-your-own-bitrise-step.html](https://devcenter.bitrise.io/en/steps-and-workflows/developing-your-own-bitrise-step.html).
 
 **NOTE:**
 
@@ -73,7 +74,7 @@ If you want to use your step in your project's `bitrise.yml`:
 ```
 
 You can find more examples of step reference styles
-in the [bitrise CLI repository](https://github.com/bitrise-io/bitrise/blob/master/_examples/tutorials/steps-and-workflows/bitrise.yml#L65).
+in the [Bitrise DevCenter](https://devcenter.bitrise.io/en/steps-and-workflows.html).
 
 ## How to contribute to this Step
 
@@ -87,7 +88,7 @@ in the [bitrise CLI repository](https://github.com/bitrise-io/bitrise/blob/maste
   * You just have to replace the step ID in your project's `bitrise.yml` with either a relative path, or with a git URL format
   * (relative) path format: instead of `- original-step-id:` use `- path::./relative/path/of/script/on/your/Mac:`
   * direct git URL format: instead of `- original-step-id:` use `- git::https://github.com/user/step.git@branch:`
-  * You can find more example of alternative step referencing at: https://github.com/bitrise-io/bitrise/blob/master/_examples/tutorials/steps-and-workflows/bitrise.yml
+  * You can find more example of alternative step referencing at: https://devcenter.bitrise.io/en/steps-and-workflows.html
 7. Once you're done just commit your changes & create a Pull Request
 
 
